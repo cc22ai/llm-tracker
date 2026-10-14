@@ -356,15 +356,15 @@ const MODELS = [
   "total_params": null,
   "active_params": null,
   "open_weights": "N",
-  "price_input_usd": null,
-  "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
-  "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_input_usd": 10.0,
+  "price_cached_usd": 1.0,
+  "price_output_usd": 50.0,
+  "price_input_rmb": 72.0,
+  "price_cached_rmb": 7.2,
+  "price_output_rmb": 360.0,
   "cache_hit_rate": 90,
-  "notes": "Limited-availability preview of top Mythos tier. Pricing not separately published (treated as Mythos 5 class).",
-  "source": "https://platform.claude.com/docs/en/about-claude/pricing"
+  "notes": "Limited-availability preview of top Mythos tier. Not separately priced by Anthropic; priced at the Mythos 5 rate ($10 in / $50 out / $1.00 cache read per 1M), same as Fable 5.1. Treat as approximate.",
+  "source": "https://docs.anthropic.com/en/docs/about-claude/pricing"
  },
  {
   "company": "Anthropic",
@@ -546,15 +546,15 @@ const MODELS = [
   "total_params": null,
   "active_params": null,
   "open_weights": "N",
-  "price_input_usd": null,
-  "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
-  "price_cached_rmb": null,
-  "price_output_rmb": null,
-  "cache_hit_rate": 90,
-  "notes": "Announcement states ~half the cost of Opus 5.5; exact API price not captured in sources. 1M context.",
-  "source": "https://platform.claude.com/docs/en/about-claude/pricing"
+  "price_input_usd": 2.0,
+  "price_cached_usd": 0.1,
+  "price_output_usd": 10.0,
+  "price_input_rmb": 14.4,
+  "price_cached_rmb": 0.72,
+  "price_output_rmb": 72.0,
+  "cache_hit_rate": 95,
+  "notes": "Claude 5.5 family mid-tier ('best combination of speed and intelligence'). $2 in / $10 out per 1M; cache reads $0.10 (cut 50% on 2026-10-07). 1M context, 128K max output.",
+  "source": "https://docs.anthropic.com/en/docs/about-claude/pricing"
  },
  {
   "company": "Anthropic",
@@ -565,15 +565,15 @@ const MODELS = [
   "total_params": null,
   "active_params": null,
   "open_weights": "N",
-  "price_input_usd": null,
-  "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
-  "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_input_usd": 0.1,
+  "price_cached_usd": 0.01,
+  "price_output_usd": 0.5,
+  "price_input_rmb": 0.72,
+  "price_cached_rmb": 0.072,
+  "price_output_rmb": 3.6,
   "cache_hit_rate": 90,
-  "notes": "Cheapest/fastest/capable small model; exact API price not captured in sources. 1M context.",
-  "source": "https://platform.claude.com/docs/en/about-claude/pricing"
+  "notes": "Cheapest/fastest small model; 1M context, 128K max output. Tiered by prompt length: <=100K $0.10 in / $0.50 out / $0.01 cache read; >100K $0.50 in / $2.50 out / $0.05 cache read. Cache writes $0.125 (5m) / $0.20 (1h). Figures shown are the <=100K tier (~90% of requests).",
+  "source": "https://docs.anthropic.com/en/docs/about-claude/pricing"
  },
  {
   "company": "OpenAI",
@@ -1826,7 +1826,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "Teacher model announced Apr 2025 (~2T total / 288B active, 16 experts). Never publicly released (still in training at announcement); no API or open weights as of Oct 2026.",
+  "notes": "Teacher model announced Apr 2025 (~2T total / 288B active, 16 experts). Never publicly released (still in training at announcement); no API and no open weights as of Oct 2026, so no price is or will be tracked.",
   "source": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/"
  },
  {
@@ -2415,7 +2415,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "First reasoning model; RL-trained, multimodal (text+vision), o1 parity. Parameter count undisclosed. API-only / freemium; per-token pricing not publicly published.",
+  "notes": "First reasoning model (RL-trained, multimodal text+vision, o1 parity), released Jan 2025. Parameter count undisclosed. Historical API-only/freemium model; Moonshot has never published per-token pricing for it and it is not on current pricing pages, so no API price is tracked.",
   "source": "https://arxiv.org/abs/2501.12599"
  },
  {
@@ -2434,7 +2434,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "Open-weight vision-language model (MIT). 16B total / 2.8B active MoE decoder + 400M MoonViT encoder. A Kimi-VL-Thinking long-CoT branch also released. API pricing not separately published (free/self-host).",
+  "notes": "Open-weight vision-language model (MIT), 16B total / 2.8B active MoE decoder + 400M MoonViT encoder; Kimi-VL-Thinking long-CoT branch also released. No official first-party hosted API price (open weights, self-host free); no stable OpenRouter route found.",
   "source": "https://huggingface.co/moonshotai/Kimi-VL"
  },
  {
@@ -2484,15 +2484,15 @@ const MODELS = [
   "total_params": "48B",
   "active_params": "3B",
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.3,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 0.6,
+  "price_input_rmb": 2.16,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 4.32,
   "cache_hit_rate": null,
-  "notes": "Lightweight 48B MoE (3B active) for edge/consumer hardware. Released October 2025. Pricing not published in sources reviewed.",
-  "source": "https://kimi-app.com/models"
+  "notes": "Lightweight 48B MoE (3B active) for edge/consumer hardware, released Oct 2025. No first-party hosted API price published by Moonshot; figures are the OpenRouter-hosted route (open weights, self-host free).",
+  "source": "https://openrouter.ai/moonshotai/kimi-linear-48b-a3b-instruct"
  },
  {
   "company": "Moonshot AI",
@@ -2724,25 +2724,6 @@ const MODELS = [
  },
  {
   "company": "MiniMax",
-  "model": "H3",
-  "release_date": "2026-07-31",
-  "tier": "video-gen",
-  "context_length": null,
-  "total_params": null,
-  "active_params": null,
-  "open_weights": "Y",
-  "price_input_usd": null,
-  "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
-  "price_cached_rmb": null,
-  "price_output_rmb": null,
-  "cache_hit_rate": null,
-  "notes": "Omni-modal VIDEO-generation model (text/image/video/audio in -> video + stereo audio, up to 15s 2K). Open-sourced under MiniMax H3 Community License 2026-07-31. NOT a text LLM - included per request; filter out if tracking text LLMs only.",
-  "source": "https://www.minimax.io/news/minimax-h3-open-source"
- },
- {
-  "company": "MiniMax",
   "model": "M3.1-Flash-Preview",
   "release_date": "2026-09-28",
   "tier": "flash",
@@ -2750,15 +2731,15 @@ const MODELS = [
   "total_params": "428B (MoE)",
   "active_params": null,
   "open_weights": "N",
-  "price_input_usd": null,
-  "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
-  "price_cached_rmb": null,
-  "price_output_rmb": null,
-  "cache_hit_rate": null,
-  "notes": "Public beta (MiniMax Code). Native multimodal, 1M ctx. Part of M3 (428B MoE) family; Flash tier for lightweight/high-frequency. Pricing not yet disclosed.",
-  "source": "https://www.cs.com.cn/ssgs/01/2026/09/29/detail_2026092910042251.html"
+  "price_input_usd": 0.1458,
+  "price_cached_usd": 0.0292,
+  "price_output_usd": 0.5833,
+  "price_input_rmb": 1.05,
+  "price_cached_rmb": 0.21,
+  "price_output_rmb": 4.2,
+  "cache_hit_rate": 80,
+  "notes": "Public beta (MiniMax Code). Native multimodal, 1M ctx, 128K max output. Flash tier of the M3 (428B MoE) family. <=512K tier; >512K is 2x (in 2.10 / out 8.40 / cache 0.42). UNCERTAIN: MiniMax's own pricing page is JS-rendered; figures are the official-direct channel listed by aggregator geekai.co. A community pricing table instead lists the M3 rate (2.10 / 8.40 / 0.42) - verify before relying on it.",
+  "source": "https://geekai.co/models/minimax-m3.1-flash-preview"
  },
  {
   "company": "Tencent",
@@ -2776,7 +2757,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "Largest open Transformer-MoE at release (389B/52B). 256K pretrain / 128K instruct context. Released with A52B-Pretrain / A52B-Instruct / A52B-FP8. Open weights for self-hosting (no standard API token price tracked). Tencent Hunyuan Community License (conditional commercial) -> Partial.",
+  "notes": "Largest open Transformer-MoE at release (389B total / 52B active); 256K pretrain / 128K instruct context. Released with A52B-Pretrain / A52B-Instruct / A52B-FP8. Open weights for self-hosting under Tencent Hunyuan Community License (conditional commercial) -> Partial. No standard paid API token price published (self-host); no price tracked.",
   "source": "https://github.com/Tencent-Hunyuan/Tencent-Hunyuan-Large"
  },
  {
@@ -2902,15 +2883,15 @@ const MODELS = [
   "total_params": "770B",
   "active_params": "49B",
   "open_weights": "Y",
-  "price_input_usd": null,
-  "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
-  "price_cached_rmb": null,
-  "price_output_rmb": null,
-  "cache_hit_rate": null,
-  "notes": "User referred to as 'hy4.1 preview'; verified official name is 'Hy4 preview' (770B MoE, 49B active, 1M ctx). Open-sourced on HuggingFace/TokenHub/OpenRouter. API pricing not disclosed in sources - confirm exact naming.",
-  "source": "https://www.aibase.com/news/30697"
+  "price_input_usd": 0.8333,
+  "price_cached_usd": 0.0417,
+  "price_output_usd": 2.5,
+  "price_input_rmb": 6.0,
+  "price_cached_rmb": 0.3,
+  "price_output_rmb": 18.0,
+  "cache_hit_rate": 95,
+  "notes": "Early preview of Hy4 (770B MoE, 49B active, 1M ctx), open-sourced and live on Tencent Cloud TokenHub and OpenRouter. Official Tencent pricing: input 6 yuan, output 18 yuan, cache-hit input 0.3 yuan per 1M tokens. USD not published by Tencent (derived at 1 USD = 7.20 RMB).",
+  "source": "https://hy.tencent.com/research/hy4-preview"
  },
  {
   "company": "Alibaba",
@@ -2921,15 +2902,15 @@ const MODELS = [
   "total_params": "32.5B",
   "active_params": null,
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.15,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 0.58,
+  "price_input_rmb": 1.08,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 4.176,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; reasoning model built on Qwen2.5-32B via large-scale RL. Native 32K context, extended to 128K (131072) via YaRN. 32.5B total (31B non-embedding), dense. No official DashScope hosted price (open-weight, self-host).",
-  "source": "https://qwenlm.github.io/blog/qwq-32b/"
+  "notes": "Apache 2.0 reasoning model built on Qwen2.5-32B via large-scale RL; 32K native context extended to 128K (131072) via YaRN; 32.5B total dense. No official DashScope hosted SKU (open-weight, self-host free); figures are the OpenRouter-hosted route.",
+  "source": "https://openrouter.ai/qwen/qwq-32b"
  },
  {
   "company": "Alibaba",
@@ -2947,7 +2928,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; dense; part of Qwen3 April 2025 launch (6 dense + 2 MoE). 32K context.",
+  "notes": "Apache 2.0; dense; part of Qwen3 April 2025 launch (6 dense + 2 MoE); 32K context. No official DashScope hosted SKU and no stable OpenRouter route (open-weight, self-host free), so no API price is tracked.",
   "source": "https://qwen.ai/blog/qwen3"
  },
  {
@@ -2966,7 +2947,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; dense; 32K context.",
+  "notes": "Apache 2.0; dense; part of Qwen3 April 2025 launch; 32K context. No official DashScope hosted SKU and no stable OpenRouter route (open-weight, self-host free), so no API price is tracked.",
   "source": "https://qwen.ai/blog/qwen3"
  },
  {
@@ -2985,7 +2966,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; dense; 32K context.",
+  "notes": "Apache 2.0; dense; part of Qwen3 April 2025 launch; 32K context. No official DashScope hosted SKU and no stable OpenRouter route (open-weight, self-host free), so no API price is tracked.",
   "source": "https://qwen.ai/blog/qwen3"
  },
  {
@@ -2997,15 +2978,15 @@ const MODELS = [
   "total_params": "8B",
   "active_params": null,
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.117,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 0.455,
+  "price_input_rmb": 0.8424,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 3.276,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; dense; 128K context.",
-  "source": "https://qwen.ai/blog/qwen3"
+  "notes": "Apache 2.0 dense; part of Qwen3 April 2025 launch (6 dense + 2 MoE); 128K context. No official DashScope hosted SKU (open-weight, self-host free); figures are the OpenRouter-hosted route.",
+  "source": "https://openrouter.ai/qwen/qwen3-8b"
  },
  {
   "company": "Alibaba",
@@ -3016,15 +2997,15 @@ const MODELS = [
   "total_params": "14B",
   "active_params": null,
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.1,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 0.22,
+  "price_input_rmb": 0.72,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 1.584,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; dense; 128K context.",
-  "source": "https://qwen.ai/blog/qwen3"
+  "notes": "Apache 2.0 dense; part of Qwen3 April 2025 launch; 128K context. No official DashScope hosted SKU (open-weight, self-host free); figures are the OpenRouter-hosted route.",
+  "source": "https://openrouter.ai/qwen/qwen3-14b"
  },
  {
   "company": "Alibaba",
@@ -3054,15 +3035,15 @@ const MODELS = [
   "total_params": "30B",
   "active_params": "3B",
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.12,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 0.5,
+  "price_input_rmb": 0.864,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 3.6,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; sparse MoE (128 experts, 8 active); 3B active of 30B total; 128K context. Open-weight; no separate dedicated DashScope SKU widely listed (hosted via Qwen3-235B-A22B / Plus tiers).",
-  "source": "https://qwen.ai/blog/qwen3"
+  "notes": "Apache 2.0 sparse MoE (128 experts, 8 active); 3B active of 30B total; 128K context. No dedicated DashScope SKU (open-weight, self-host free); figures are the OpenRouter-hosted route (varies by provider; other listings show ~$0.08/$0.28).",
+  "source": "https://openrouter.ai/qwen/qwen3-30b-a3b"
  },
  {
   "company": "Alibaba",
@@ -3149,15 +3130,15 @@ const MODELS = [
   "total_params": "1T+",
   "active_params": null,
   "open_weights": "N",
-  "price_input_usd": null,
-  "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
-  "price_cached_rmb": null,
-  "price_output_rmb": null,
-  "cache_hit_rate": null,
-  "notes": "First Qwen model over 1 trillion parameters; closed-weight, API-only (Alibaba Cloud / OpenRouter). Preview of Qwen3-Max. Full release 2025-09-24.",
-  "source": "https://www.xinhuanet.com/tech/20250924/7f3377e5e81441eb95bc3280539b3594/c.html"
+  "price_input_usd": 0.3472,
+  "price_cached_usd": 0.0694,
+  "price_output_usd": 1.3889,
+  "price_input_rmb": 2.5,
+  "price_cached_rmb": 0.5,
+  "price_output_rmb": 10.0,
+  "cache_hit_rate": 80,
+  "notes": "First Qwen model over 1T parameters; closed-weight, API-only via Alibaba Cloud Model Studio / OpenRouter. Preview of Qwen3-Max (full release 2025-09-24), so priced at the qwen3-max rate. <=32K tier: 2.5 yuan in / 10 yuan out / 0.5 yuan cached-in per 1M; tiered to 4/20 (32-128K) and 7/35 (128-256K).",
+  "source": "https://help.aliyun.com/zh/document_detail/3063429.html"
  },
  {
   "company": "Alibaba",
@@ -3168,15 +3149,15 @@ const MODELS = [
   "total_params": "80B",
   "active_params": "3B",
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.15,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 1.2,
+  "price_input_rmb": 1.08,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 8.64,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; novel hybrid Gated DeltaNet linear-attention + gated full-attention architecture; 3B active of 80B total; 256K native context, ~10x throughput vs Qwen3-32B at long context. Open-weight; no dedicated DashScope SKU listed.",
-  "source": "https://qwen.ai/blog"
+  "notes": "Apache 2.0; novel hybrid Gated DeltaNet linear-attention + gated full-attention architecture; 3B active of 80B total; 256K native context, ~10x throughput vs Qwen3-32B at long context. No dedicated DashScope SKU; figures are the OpenRouter route (served by Google Vertex and Alibaba Cloud Int.).",
+  "source": "https://openrouter.ai/qwen/qwen3-next-80b-a3b-thinking"
  },
  {
   "company": "Alibaba",
@@ -3187,15 +3168,15 @@ const MODELS = [
   "total_params": "30B",
   "active_params": "3B",
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.25,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 0.9583,
+  "price_input_rmb": 1.8,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 6.9,
   "cache_hit_rate": null,
-  "notes": "End-to-end omni-modal (text/image/audio/video in, text+streaming speech out) using Thinker-Talker MoE; 3B active of 30B total. Apache 2.0. Also shipped as -Thinking and -Captioner variants. Hosted 'qwen3-omni-flash' has separate pricing; not captured here.",
-  "source": "https://qwen.ai/blog"
+  "notes": "End-to-end omni-modal (text/image/audio/video in, text + streaming speech out), Thinker-Talker MoE, 3B active of 30B total, Apache 2.0. Hosted on DashScope as qwen3-omni-flash; Beijing-region text rates shown (1.8 yuan in / 6.9 yuan out per 1M; international $0.43 / $1.66). Other modalities cost more: audio input 15.8 yuan, image/video input 3.3 yuan, multimodal-input output 12.7 yuan, text+audio output 62.6 yuan. No prompt-cache price published.",
+  "source": "https://bailian.console.aliyun.com/cn-beijing/model/market/detail/qwen3-omni-flash"
  },
  {
   "company": "Alibaba",
@@ -3206,15 +3187,15 @@ const MODELS = [
   "total_params": "235B",
   "active_params": "22B",
   "open_weights": "Y",
-  "price_input_usd": null,
-  "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
-  "price_cached_rmb": null,
-  "price_output_rmb": null,
-  "cache_hit_rate": null,
-  "notes": "Vision-language flagship of Qwen3-VL (Instruct + Thinking variants); 22B active of 235B total; ~256K context. Apache 2.0. Smaller VL variants (30B-A3B, 32B, 8B, 4B, 2B) released Oct 2025. Hosted API pricing varies by size; not captured here.",
-  "source": "https://qwen.ai/blog"
+  "price_input_usd": 0.1389,
+  "price_cached_usd": 0.0278,
+  "price_output_usd": 1.3889,
+  "price_input_rmb": 1.0,
+  "price_cached_rmb": 0.2,
+  "price_output_rmb": 10.0,
+  "cache_hit_rate": 80,
+  "notes": "Vision-language flagship of Qwen3-VL (Instruct + Thinking variants); 22B active of 235B total; ~256K context; Apache 2.0. Hosted on DashScope as qwen3-vl-plus; <=32K Beijing tier shown (1 yuan in / 10 yuan out / 0.2 yuan cache-hit per 1M), tiered to 1.5/15 and 3/30. Smaller VL variants (30B-A3B, 32B, 8B, 4B, 2B) released Oct 2025.",
+  "source": "https://help.aliyun.com/zh/model-studio/qwen3-vl-plus"
  },
  {
   "company": "Alibaba",
@@ -3263,15 +3244,15 @@ const MODELS = [
   "total_params": "397B",
   "active_params": "17B",
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.39,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 2.34,
+  "price_input_rmb": 2.808,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 16.848,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; first Qwen3.5 open-weight release (Chinese New Year's Eve). Sparse MoE (397B total / 17B active) with Gated DeltaNet + softmax hybrid attention; 256K native context, ~1M via RoPE scaling; unified native multimodal backbone. Open-weight, no standard hosted SKU (hosted equivalent is Qwen3.5-Plus).",
-  "source": "https://ima.qq.com/wiki/?shareId=0e01462a0c3fb7e1e1992c910f19ee2bb9c74f66169eab146a5ae6988cb0affc"
+  "notes": "Apache 2.0; first Qwen3.5 open-weight release (Chinese New Year's Eve). Sparse MoE (397B total / 17B active) with Gated DeltaNet + softmax hybrid attention; 256K native context (~1M via RoPE scaling); unified native multimodal backbone. No standard hosted SKU (open-weight, self-host free); figures are the OpenRouter route, which varies by provider (other listings ~$0.55/$3.50).",
+  "source": "https://openrouter.ai/qwen/qwen3.5-397b-a17b"
  },
  {
   "company": "Alibaba",
@@ -3282,15 +3263,15 @@ const MODELS = [
   "total_params": "122B",
   "active_params": "10B",
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.26,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 2.08,
+  "price_input_rmb": 1.872,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 14.976,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; Qwen3.5 open MoE variant (122B total / 10B active); 256K native context. Part of the Feb 2026 Qwen3.5 open-weight family.",
-  "source": "https://traictory.com/news/2026-03-23-qwen-3-5-max-arena"
+  "notes": "Apache 2.0; Qwen3.5 open MoE variant (122B total / 10B active); 256K native context; part of the Feb 2026 Qwen3.5 open-weight family. No standard hosted SKU (self-host free); figures are the OpenRouter route.",
+  "source": "https://openrouter.ai/qwen/qwen3.5-122b-a10b"
  },
  {
   "company": "Alibaba",
@@ -3301,15 +3282,15 @@ const MODELS = [
   "total_params": "35B",
   "active_params": "3B",
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.08,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 0.75,
+  "price_input_rmb": 0.576,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 5.4,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; Qwen3.5 open MoE variant (35B total / 3B active); 256K native context. Beats Qwen3-235B-A22B on core benchmarks despite ~7x fewer total params. (Some sources also cite a 2B dense open variant.)",
-  "source": "https://traictory.com/news/2026-03-23-qwen-3-5-max-arena"
+  "notes": "Apache 2.0; Qwen3.5 open MoE variant (35B total / 3B active); 256K native context. Beats Qwen3-235B-A22B on core benchmarks despite ~7x fewer total params. No standard hosted SKU (self-host free); figures are the OpenRouter route.",
+  "source": "https://openrouter.ai/qwen/qwen3.5-35b-a3b"
  },
  {
   "company": "Alibaba",
@@ -3320,15 +3301,15 @@ const MODELS = [
   "total_params": "27B",
   "active_params": null,
   "open_weights": "Y",
-  "price_input_usd": null,
+  "price_input_usd": 0.195,
   "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
+  "price_output_usd": 1.56,
+  "price_input_rmb": 1.404,
   "price_cached_rmb": null,
-  "price_output_rmb": null,
+  "price_output_rmb": 11.232,
   "cache_hit_rate": null,
-  "notes": "Apache 2.0; Qwen3.5 open dense variant (27B); 256K native context. Part of the Feb 2026 Qwen3.5 open-weight family.",
-  "source": "https://traictory.com/news/2026-03-23-qwen-3-5-max-arena"
+  "notes": "Apache 2.0; Qwen3.5 open dense variant (27B) with linear attention; 256K native context; part of the Feb 2026 Qwen3.5 open-weight family. No standard hosted SKU (self-host free); figures are the OpenRouter route.",
+  "source": "https://openrouter.ai/qwen/qwen3.5-27b"
  },
  {
   "company": "Alibaba",
@@ -3384,7 +3365,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "Closed-weight preview flagship of Qwen3.5; debuted on LMArena (score 1464, #6 global, China #1 at the time). No public API at preview. Parameters undisclosed (flagship ~1T+ class).",
+  "notes": "Closed-weight preview flagship of Qwen3.5; debuted on LMArena (score 1464, #6 global, China #1 at the time). No public API was available at preview, so no API price is tracked. Parameters undisclosed (flagship ~1T+ class).",
   "source": "https://new.qq.com/rain/a/20260320A05XUB00"
  },
  {
@@ -3422,8 +3403,8 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "Open-weight preview of the Qwen4 architecture (hybrid Gated DeltaNet + Qwen Sparse Attention). 125B total / 6B active + 51B n-gram embedding + 4B MTP; 262K native context (1M via YaRN); multimodal text+image+video in / text out. License qwen-community-1.0 (conditional -> Partial). No hosted API price published. Released 2026-08-26 on HuggingFace/ModelScope.",
-  "source": "https://qwen.ai/blog?amp;&id=qwen3.8-flash-next ; https://llm-stats.com/blog/research/qwen3.8-flash-next-launch"
+  "notes": "Open-weight preview of the Qwen4 architecture (hybrid Gated DeltaNet + Qwen Sparse Attention). 125B total / 6B active + 51B n-gram embedding + 4B MTP; 262K native context (1M via YaRN); multimodal text+image+video in / text out. License qwen-community-1.0 (conditional -> Partial). No hosted API price published (open weights, self-host free); the separately-hosted 'Qwen3.8 Flash' is a different model.",
+  "source": "https://qwen.ai/blog?id=qwen3.8-flash-next"
  },
  {
   "company": "Xiaomi",
@@ -3441,7 +3422,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "MIT; Xiaomi's first open reasoning model (Core team, led by Luo Fuli). 7B dense (7.8B actual), 32K context, ~25T pretrain tokens, MTP. Released as Base / SFT / RL-Zero / RL (RL scored 68.2 AIME24). No official hosted API at launch (open-weight, self-host; third-party gateways ~RMB 0.36/1.08 per M).",
+  "notes": "MIT; Xiaomi's first open reasoning model (Core team, led by Luo Fuli). 7B dense (7.8B actual), 32K context, ~25T pretrain tokens, MTP; released as Base / SFT / RL-Zero / RL (RL scored 68.2 AIME24). No official hosted API at launch (open-weight, self-host free); only soft third-party gateway quotes (~RMB 0.36/1.08 per 1M) exist, so no firm API price is tracked.",
   "source": "https://baike.baidu.com/item/MiMo-7B/65647677"
  },
  {
@@ -3460,7 +3441,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "MIT; vision-language model (SFT + RL variants); 7B, Qwen2.5-ViT encoder + MiMo-7B LM; 2.4T multimodal tokens, MORL. arXiv tech report 2025-06-04; re-released as -2508 on 2025-08-07. Open-weight, self-host.",
+  "notes": "MIT; vision-language model (SFT + RL variants); 7B, Qwen2.5-ViT encoder + MiMo-7B LM; 2.4T multimodal tokens, MORL. arXiv tech report 2025-06-04; re-released as -2508 on 2025-08-07. Open-weight, self-host; no published API price.",
   "source": "https://news.qq.com/rain/a/20250707A07LMC00"
  },
  {
@@ -3479,7 +3460,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "MIT; audio language model (Base / Instruct / Tokenizer), 7B. Open-weight, self-host.",
+  "notes": "MIT; audio language model (Base / Instruct / Tokenizer), 7B. Open-weight, self-host; no published API price.",
   "source": "https://www.hivebook.wiki/wiki/mimo-xiaomi-s-open-reasoning-model-family"
  },
  {
@@ -3498,7 +3479,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "MIT; embodied-AI + autonomous-driving VLM, 7B. First cross-domain base model linking autonomous driving and embodied AI. Open-weight, self-host.",
+  "notes": "MIT; embodied-AI + autonomous-driving VLM, 7B; first cross-domain base model linking autonomous driving and embodied AI. Open-weight, self-host; no published API price.",
   "source": "https://www.hivebook.wiki/wiki/mimo-xiaomi-s-open-reasoning-model-family"
  },
  {
@@ -3517,7 +3498,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "MIT; first MiMo MoE flagship (309B total / 15B active); hybrid Sliding-Window + Global attention (5:1); 56K context (official xiaomi-mimo site); ~150 tok/s; SWE-bench Verified 73.4%. Open-weight, self-host.",
+  "notes": "MIT; first MiMo MoE flagship (309B total / 15B active); hybrid Sliding-Window + Global attention (5:1); 56K context; ~150 tok/s; SWE-bench Verified 73.4%. Open-weight, self-host; no published first-party API price (the later hosted V2.6-Flash tier is a different model).",
   "source": "https://www.xiaomi-mimo-ai.com/zh"
  },
  {
@@ -3555,7 +3536,7 @@ const MODELS = [
   "price_cached_rmb": null,
   "price_output_rmb": null,
   "cache_hit_rate": null,
-  "notes": "Omni-modal model released alongside MiMo-V2-Pro (2026-03-19). Parameters undisclosed. Proprietary at launch.",
+  "notes": "Omni-modal model released alongside MiMo-V2-Pro (2026-03-19). Parameters undisclosed; proprietary at launch. No published API price.",
   "source": "https://www.xiaomi-mimo-ai.com/zh"
  },
  {
@@ -3567,15 +3548,15 @@ const MODELS = [
   "total_params": "1T+",
   "active_params": null,
   "open_weights": "Y",
-  "price_input_usd": null,
-  "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
-  "price_cached_rmb": null,
-  "price_output_rmb": null,
-  "cache_hit_rate": null,
-  "notes": "MIT; V2.5 generation open MoE flagship (1T-class), positioned as a top open-model contender. Released with MiMo-V2.5-Omni and MiMo-V2.5-TTS. Open-weight, self-host (MiMo API also available at $1/$3).",
-  "source": "https://www.xiaomi-mimo-ai.com/zh"
+  "price_input_usd": 0.435,
+  "price_cached_usd": 0.0036,
+  "price_output_usd": 0.87,
+  "price_input_rmb": 3.0,
+  "price_cached_rmb": 0.025,
+  "price_output_rmb": 6.0,
+  "cache_hit_rate": 99,
+  "notes": "MIT; V2.5 generation open MoE flagship (1T-class), positioned as a top open-model contender; released with MiMo-V2.5-Omni and MiMo-V2.5-TTS. Official MiMo API: 3 yuan in / 6 yuan out / 0.025 yuan cache-hit per 1M (international $0.435 / $0.87 / $0.0036). Cache writes free for a limited time. Being retired 2026-10-21 in favour of V2.6.",
+  "source": "https://mimo.mi.com/docs/zh-CN/price"
  },
  {
   "company": "Xiaomi",
@@ -3586,15 +3567,15 @@ const MODELS = [
   "total_params": "1.02T",
   "active_params": "42B",
   "open_weights": "Y",
-  "price_input_usd": null,
-  "price_cached_usd": null,
-  "price_output_usd": null,
-  "price_input_rmb": null,
-  "price_cached_rmb": null,
-  "price_output_rmb": null,
-  "cache_hit_rate": null,
-  "notes": "Series flagship (Pro). 1.02T MoE (42B active), 1M ctx, native text/image/video/audio. MIT-licensed open weights. Also Flash (309B/15B) and Pro-UltraSpeed. API pricing unchanged from V2.5 (not in source).",
-  "source": "https://mimo.xiaomi.com/mimo-v2-6"
+  "price_input_usd": 0.435,
+  "price_cached_usd": 0.0036,
+  "price_output_usd": 0.87,
+  "price_input_rmb": 3.0,
+  "price_cached_rmb": 0.025,
+  "price_output_rmb": 6.0,
+  "cache_hit_rate": 99,
+  "notes": "Series flagship (Pro). 1.02T MoE (42B active), 1M ctx, native text/image/video/audio; MIT-licensed open weights. Official MiMo API (unchanged from V2.5): 3 yuan in / 6 yuan out / 0.025 yuan cache-hit per 1M (international $0.435 / $0.87 / $0.0036). Cache writes free for a limited time. Sibling tiers: V2.6-Flash $0.14/$0.28 (1 yuan/2 yuan) and V2.6-Pro-UltraSpeed $4.35/$8.7 (30 yuan/60 yuan).",
+  "source": "https://mimo.xiaomi.com/mimo-v2-6/article"
  }
 ];
 
