@@ -1857,7 +1857,7 @@ const MODELS = [
   "cache_hit_rate": 50,
   "notes": "Text-only multilingual model; drop-in upgrade to Llama 3.1 70B. Prices from Groq hosted API (USD list); RMB converted at fixed 1 USD = 7.20 RMB. Llama 3.3 Community License (open weights, use limited to <700M MAU).",
   "source": "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
-  "license": "Llama Community License (>700M MAU restrictions)"
+  "license": "Llama 3.3 Community License (>700M MAU; acceptance required)"
  },
  {
   "company": "Meta",
@@ -1877,7 +1877,7 @@ const MODELS = [
   "cache_hit_rate": 50,
   "notes": "First open-weight natively multimodal MoE; 16 experts, 10M context, fits single H100 (Int4). Prices from Groq hosted API; RMB at 7.20. Llama 4 Community License.",
   "source": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
-  "license": "Llama Community License (>700M MAU restrictions)"
+  "license": "Llama 4 Community License (>700M MAU; acceptance required)"
  },
  {
   "company": "Meta",
@@ -1897,7 +1897,7 @@ const MODELS = [
   "cache_hit_rate": 50,
   "notes": "Natively multimodal MoE; 128 experts, 1M context. Prices from Groq hosted API; RMB at 7.20. Llama 4 Community License.",
   "source": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
-  "license": "Llama Community License (>700M MAU restrictions)"
+  "license": "Llama 4 Community License (>700M MAU; acceptance required)"
  },
  {
   "company": "Meta",
@@ -2257,7 +2257,7 @@ const MODELS = [
   "cache_hit_rate": 81,
   "notes": "Post-trained on GLM-5.2 base for coding/cybersecurity/agentic; ~753B total. Released under non-MIT license (weights open). USD from docs.z.ai; RMB via 7.20.",
   "source": "https://docs.z.ai/guides/overview/pricing",
-  "license": "Modified MIT (Z.ai; >$10M annual revenue threshold)"
+  "license": "GLM-5.3 License (modified MIT; Z.ai; MaaS operators >$10B/12mo require Z.AI security review)"
  },
  {
   "company": "Z.ai",
@@ -2317,7 +2317,7 @@ const MODELS = [
   "cache_hit_rate": 75,
   "notes": "MoE, 14.8T tokens pretrain. Open-source (MIT). Permanent API price from 2025-02-08 (promo to that date was cache-hit 0.1 / miss 1 / output 2 RMB).",
   "source": "https://www.deepseek.com/en/news/deepseek-v3",
-  "license": "MIT"
+  "license": "DeepSeek License Agreement (custom; weights) / MIT (code)"
  },
  {
   "company": "DeepSeek",
@@ -2617,7 +2617,7 @@ const MODELS = [
   "cache_hit_rate": 75,
   "notes": "First 1T MoE open-weight model (Modified MIT). 384 experts, 8 active + 1 shared, MLA. Agentic/tool-use focus. Cached-input RMB derived (~1.08) from $0.15; official launch gave input 4 / output 16 RMB.",
   "source": "https://www.cnii.com.cn/rmydb/202507/t20250717_672932.html",
-  "license": "Modified MIT (Kimi K2; >100M MAU or >$20M/mo revenue)"
+  "license": "Modified MIT (Kimi K2 Community License; >100M MAU or >$20M/mo -> display 'Kimi K2')"
  },
  {
   "company": "Moonshot AI",
@@ -2637,7 +2637,7 @@ const MODELS = [
   "cache_hit_rate": 75,
   "notes": "K2 Instruct refresh; context extended 128K -> 256K, improved coding. Pricing assumed same as K2 base.",
   "source": "https://kimi-app.com/models",
-  "license": "Modified MIT (Kimi K2; >100M MAU or >$20M/mo revenue)"
+  "license": "Modified MIT (Kimi K2 Community License; >100M MAU or >$20M/mo -> display 'Kimi K2')"
  },
  {
   "company": "Moonshot AI",
@@ -2657,7 +2657,7 @@ const MODELS = [
   "cache_hit_rate": null,
   "notes": "Lightweight 48B MoE (3B active) for edge/consumer hardware, released Oct 2025. No first-party hosted API price published by Moonshot; figures are the OpenRouter-hosted route (open weights, self-host free).",
   "source": "https://openrouter.ai/moonshotai/kimi-linear-48b-a3b-instruct",
-  "license": "Modified MIT (Kimi; >100M MAU or >$20M/mo revenue)"
+  "license": "MIT"
  },
  {
   "company": "Moonshot AI",
@@ -2677,7 +2677,7 @@ const MODELS = [
   "cache_hit_rate": 75,
   "notes": "First reasoning model in K2 family: native interleaved thinking + tool calls; 256K context; Modified MIT; native INT4 QAT. RMB derived from USD at 7.20.",
   "source": "https://www.open-source-ai.tech/models/kimi-k2-thinking",
-  "license": "Modified MIT (Kimi K2; >100M MAU or >$20M/mo revenue)"
+  "license": "Modified MIT (Kimi K2 Community License; >100M MAU or >$20M/mo -> display 'Kimi K2')"
  },
  {
   "company": "Moonshot AI",
@@ -2697,7 +2697,7 @@ const MODELS = [
   "cache_hit_rate": 83,
   "notes": "Native multimodal (MoonViT-3D vision encoder), 256K context, Modified MIT. Four modes: Instant / Thinking / Agent / Agent Swarm. RMB derived from USD at 7.20.",
   "source": "https://www.aireleasetracker.com/model/moonshot/kimi-k2.5",
-  "license": "Modified MIT (Kimi K2; >100M MAU or >$20M/mo revenue)"
+  "license": "Modified MIT (Kimi K2 Community License; >100M MAU or >$20M/mo -> display 'Kimi K2')"
  },
  {
   "company": "Moonshot AI",
@@ -2717,7 +2717,7 @@ const MODELS = [
   "cache_hit_rate": null,
   "notes": "Multimodal agentic coding model; native image/video input; Agent Swarm (up to 300 sub-agents). Modified MIT. Official Moonshot API price used; cached-input price not published.",
   "source": "https://aiwiki.ai/wiki/kimi_k2_6",
-  "license": "Modified MIT (Kimi K2; >100M MAU or >$20M/mo revenue)"
+  "license": "Modified MIT (Kimi K2 Community License; >100M MAU or >$20M/mo -> display 'Kimi K2')"
  },
  {
   "company": "Moonshot AI",
@@ -2737,7 +2737,7 @@ const MODELS = [
   "cache_hit_rate": 90,
   "notes": "2.8T MoE (16/896 experts, 104B active). Open weights 2026-07-27 (Kimi K3 License). Native vision, 1M ctx. Highest open-weight Intelligence Index at launch.",
   "source": "https://whatllm.org/blog/kimi-k3",
-  "license": "Kimi K3 License (custom Modified-MIT; large MaaS needs separate agreement)"
+  "license": "Kimi K3 License (custom; separate agreement for large MaaS + 'Kimi K3' display)"
  },
  {
   "company": "MiniMax",
@@ -2757,7 +2757,7 @@ const MODELS = [
   "cache_hit_rate": null,
   "notes": "Open-sourced 2025-01-15. Hybrid Lightning/Softmax attention (7 lightning : 1 softmax per 8 layers), 80 layers, 32 experts Top-2. Training context 1M, extrapolates to 4M at inference (100% on 4M Needle-in-a-Haystack). Custom MiniMax Model License (not fully permissive). VL sibling MiniMax-VL-01 released same day.",
   "source": "https://www.minimax.io/news/minimax-01-series-2",
-  "license": "MiniMax Community License"
+  "license": "MiniMax Model License (custom; attribution + anti-other-LLM clause)"
  },
  {
   "company": "MiniMax",
@@ -2777,7 +2777,7 @@ const MODELS = [
   "cache_hit_rate": null,
   "notes": "Vision-language model in the MiniMax-01 series; 303M-parameter vision encoder on the Text-01 base; multimodal understanding API. Custom MiniMax Model License.",
   "source": "https://www.minimax.io/news/minimax-01-series-2",
-  "license": "MiniMax Community License"
+  "license": "MiniMax Model License (custom; attribution + anti-other-LLM clause)"
  },
  {
   "company": "MiniMax",
@@ -2817,7 +2817,7 @@ const MODELS = [
   "cache_hit_rate": 90,
   "notes": "Agent/coding-focused MoE, ~100 tokens/s. Open-sourced under Apache 2.0. Launch context stated as 204,800 tokens (max output 131,072); NOTE: AWS Bedrock and some aggregators list a 1M context window — discrepancy unresolved, use 200K per launch announcement. Cache read = 10% of input (¥0.21 vs ¥2.10). USD derived from official RMB at 7.20.",
   "source": "https://www.cnstock.com/commonDetail/563893",
-  "license": "Apache 2.0"
+  "license": "Modified MIT (MiniMax; display 'MiniMax M2' if >100M MAU or >$30M ARR)"
  },
  {
   "company": "MiniMax",
@@ -2837,7 +2837,7 @@ const MODELS = [
   "cache_hit_rate": 90,
   "notes": "Improves multilingual coding (Rust/Java/Go/C++/Kotlin/Obj-C/TS) and native Android/iOS dev; more concise outputs. Same pricing as M2. Apache 2.0. Cache read = 10% of input.",
   "source": "https://www.datalearner.com/en/ai-models/pretrained-models/minimax-m2-1-preview",
-  "license": "Apache 2.0"
+  "license": "Modified MIT (MiniMax; display 'MiniMax M2.1' for any commercial use)"
  },
  {
   "company": "MiniMax",
@@ -2857,7 +2857,7 @@ const MODELS = [
   "cache_hit_rate": 90,
   "notes": "Released Feb 2026 (exact day not confirmed; 2026-02-01 is an estimate). Targets complex agentic / real-world productivity; SWE-Bench Verified ~80.2%. Pricing per MiniMax legacy table (same as M2). Cache read = 10% of input.",
   "source": "https://platform.minimax.cn/docs/pricing/overview",
-  "license": "Apache 2.0"
+  "license": "MiniMax Model License (custom; attribution + anti-other-LLM clause)"
  },
  {
   "company": "MiniMax",
@@ -2877,7 +2877,7 @@ const MODELS = [
   "cache_hit_rate": 80,
   "notes": "Agent flagship introducing 'self-evolution' via Agent Harness; SWE-bench Pro 56.22%, VIBE-Pro 55.6%, Terminal-Bench 2.0 57.0%. Launched 2026-03-18, open-sourced 2026-04-12 (Apache 2.0 assumed). Params assumed same M2 family (230B/10B). High-speed variant M2.7-highspeed priced ¥4.2/¥16.8 in, ¥0.42 cache read. Cache read = 20% of input.",
   "source": "https://www.cnfin.com/gs-lb/detail/20260318/4387855_1.html",
-  "license": "Modified MIT (MiniMax; written license required for commercial)"
+  "license": "MiniMax Non-Commercial License (written authorization required for commercial use)"
  },
  {
   "company": "MiniMax",
@@ -2897,7 +2897,7 @@ const MODELS = [
   "cache_hit_rate": 80,
   "notes": "Native multimodal (text/image/video) MoE with MiniMax Sparse Attention (MSA). 1M context (512K guaranteed min), max output 512K. Tiered: <=512K input $0.30/$1.20, >512K input $0.60/$2.40 (per MiniMax M3 page; RMB 2.1/8.4 at <=512K). Cache read $0.066 (<=512K tier) = 20% of input. Weights on HuggingFace; some sources cite Apache 2.0 but official page states MiniMax Community License (custom, restricted) -> marked Partial.",
   "source": "https://minimax-ai.chat/models/minimax-m3",
-  "license": "MiniMax Community License"
+  "license": "MiniMax Community License (> $20M/yr revenue requires written authorization)"
  },
  {
   "company": "MiniMax",
@@ -2957,7 +2957,7 @@ const MODELS = [
   "cache_hit_rate": null,
   "notes": "Largest open Transformer-MoE at release (389B total / 52B active); 256K pretrain / 128K instruct context. Released with A52B-Pretrain / A52B-Instruct / A52B-FP8. Open weights for self-hosting under Tencent Hunyuan Community License (conditional commercial) -> Partial. No standard paid API token price published (self-host); no price tracked.",
   "source": "https://github.com/Tencent-Hunyuan/Tencent-Hunyuan-Large",
-  "license": "Tencent Hunyuan Community License (>100M MAU threshold)"
+  "license": "Tencent Hunyuan Community License (>100M MAU; excludes EU/UK/SK)"
  },
  {
   "company": "Tencent",
@@ -3017,7 +3017,7 @@ const MODELS = [
   "cache_hit_rate": null,
   "notes": "Compact open-source MoE (80B/13B, 64 non-shared + 1 shared expert, Top-8). 256K native context; fused fast/slow thinking; strong Agent tool-calling. First 13B-level open MoE hybrid-reasoning model. API ¥0.5/¥2 per M tokens. Tencent Hunyuan Community License (conditional commercial) -> Partial.",
   "source": "https://cloud.tencent.com/document/api/627/97731",
-  "license": "Tencent Hunyuan Community License (>100M MAU threshold)"
+  "license": "Tencent Hunyuan Community License (>100M MAU; excludes EU/UK/SK)"
  },
  {
   "company": "Tencent",
@@ -3077,7 +3077,7 @@ const MODELS = [
   "cache_hit_rate": null,
   "notes": "First model after Hunyuan 'rebuild' (led by Chief AI Scientist Yao Shunyu). 295B/21B MoE + 3.8B MTP; 256K context; strong code/agent. Open-sourced 2026-04-23 (weights on HF/ModelScope/GitCode). API via Tencent Cloud TokenHub & OpenRouter at $0.066/$0.26 per M tokens. RMB derived from OpenRouter USD at 7.20.",
   "source": "https://github.com/Tencent-Hunyuan/Hy3-preview",
-  "license": "Tencent Hy Community License (preview; >100M MAU + territory exclusions)"
+  "license": "Tencent Hy Community License (preview; restrictive)"
  },
  {
   "company": "Tencent",
@@ -3337,7 +3337,7 @@ const MODELS = [
   "cache_hit_rate": null,
   "notes": "Lighter coding model ('qwen3-coder-flash', ~30B). Apache 2.0. DashScope China mainland (base tier <=32K): RMB 1.2/M input, 4.8/M output; tiered up to 6/M input, 30/M output at 1M context. USD derived at 7.20.",
   "source": "https://help.aliyun.com/en/dataworks/dataworks-data-agent-agent-billing",
-  "license": "Apache 2.0"
+  "license": "Qwen Community License 1.0 (modified; inferred for coder/Flash class — NOT on HF)"
  },
  {
   "company": "Alibaba",
@@ -3617,7 +3617,7 @@ const MODELS = [
   "cache_hit_rate": 87.5,
   "notes": "2.4T MoE (95B active), 1M ctx, native multimodal. Open weights mid-Aug 2026 (text base custom licence; 27B Apache 2.0). Official domestic RMB 12/1.5/36; international USD 2/0.25/6 (FX discrepancy vs 7.2 rate).",
   "source": "https://felloai.com/ja/qwen-3-8",
-  "license": "Qwen License (modified; >$20M software revenue or >$50M MaaS revenue threshold)"
+  "license": "Qwen3.8-Max License (modified; >$20M/mo or >100M MAU attribution; separate license for MaaS/AI-assistant >$50M/12mo)"
  },
  {
   "company": "Alibaba",
@@ -3637,7 +3637,7 @@ const MODELS = [
   "cache_hit_rate": null,
   "notes": "Open-weight preview of the Qwen4 architecture (hybrid Gated DeltaNet + Qwen Sparse Attention). 125B total / 6B active + 51B n-gram embedding + 4B MTP; 262K native context (1M via YaRN); multimodal text+image+video in / text out. License qwen-community-1.0 (conditional -> Partial). No hosted API price published (open weights, self-host free); the separately-hosted 'Qwen3.8 Flash' is a different model.",
   "source": "https://qwen.ai/blog?id=qwen3.8-flash-next",
-  "license": "Apache 2.0"
+  "license": "Qwen Community License 1.0 (modified; >$20M/mo or >100M MAU attribution; separate license for ANY MaaS/AI-assistant use)"
  },
  {
   "company": "Xiaomi",
