@@ -62,16 +62,28 @@
   .stat-row { display: flex; gap: 16px; padding: 10px 22px; color: var(--muted); font-size: 12px; flex-wrap: wrap; }
   .stat-row b { color: var(--text); }
   .table-wrap { overflow: auto; max-height: calc(100vh - 220px); border-top: 1px solid var(--border); }
-  table { border-collapse: collapse; width: 100%; min-width: 1450px; }
+  /* Fixed layout + explicit <col> widths keeps long notes from stretching columns.
+     Widths are user-draggable (see initColResize) and saved in localStorage. */
+  table { border-collapse: collapse; table-layout: fixed; width: 100%; min-width: 1865px; }
   thead th {
     position: sticky; top: 0; background: var(--panel-2); z-index: 2;
     text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border);
     cursor: pointer; white-space: nowrap; font-size: 12px; color: var(--muted);
-    user-select: none;
+    user-select: none; overflow: hidden; text-overflow: ellipsis;
   }
   thead th:hover { color: var(--text); }
   thead th .arrow { color: var(--accent); font-size: 10px; }
-  tbody td { padding: 8px 10px; border-bottom: 1px solid #20242e; white-space: nowrap; }
+  /* 8px drag grip on the right edge of each header */
+  thead th::after {
+    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 8px;
+    cursor: col-resize; background: transparent;
+  }
+  thead th:hover::after { background: rgba(110,168,254,.28); }
+  body.resizing, body.resizing * { cursor: col-resize !important; user-select: none !important; }
+  tbody td {
+    padding: 8px 10px; border-bottom: 1px solid #20242e;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
   tbody tr:hover { background: #161a22; }
   .company-tag { font-weight: 600; }
   .tier { text-transform: capitalize; }
@@ -83,7 +95,13 @@
   .null { color: #5b6373; }
   .src a { color: var(--accent); text-decoration: none; }
   .src a:hover { text-decoration: underline; }
-  .note { color: var(--muted); font-size: 11px; }
+  /* Notes stay on one clipped line; hover for full text, click to expand in place */
+  .note {
+    display: block; color: var(--muted); font-size: 11px; cursor: pointer;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%;
+  }
+  .note:hover { color: var(--text); }
+  .note.expanded { white-space: normal; overflow: visible; word-break: break-word; }
   .foot { padding: 12px 22px; color: var(--muted); font-size: 11px; border-top: 1px solid var(--border); }
   .flag-open { color: var(--accent-2); }
 </style>
@@ -102,6 +120,7 @@
   <span class="chip open-y" data-open="Y">Open weights only</span>
   <select id="tierFilter"><option value="">All tiers</option></select>
   <button class="btn" id="exportBtn">⬇ Export CSV</button>
+  <button class="btn" id="resetColsBtn" title="Restore default column widths">↔ Reset widths</button>
   <button class="btn" id="resetBtn">Reset</button>
 </div>
 
@@ -109,6 +128,14 @@
 
 <div class="table-wrap">
   <table id="tbl">
+    <colgroup>
+      <col style="width:110px"><col style="width:260px"><col style="width:100px">
+      <col style="width:110px"><col style="width:110px"><col style="width:110px">
+      <col style="width:110px"><col style="width:60px"><col style="width:140px">
+      <col style="width:95px"><col style="width:100px"><col style="width:95px">
+      <col style="width:95px"><col style="width:100px"><col style="width:95px">
+      <col style="width:95px"><col style="width:80px">
+    </colgroup>
     <thead>
       <tr>
         <th data-k="company">Company</th>
@@ -4383,6 +4410,72 @@ function ensureDerived(m){
   return m;
 }
 
+// === Resizable columns ===
+// Grips are CSS pseudo-elements (not DOM nodes) so render() rewriting th.innerHTML
+// cannot destroy them. Widths persist per browser in localStorage.
+const COL_DEFAULTS = [110,260,100,110,110,110,110,60,140,95,100,95,95,100,95,95,80];
+const COLS = [...document.querySelectorAll('#tbl colgroup col')];
+const WIDTH_KEY = 'llm-tracker-colwidths';
+let colWidths = {};
+let dragCol = null;
+let suppressSortClick = false;
+
+function loadColWidths(){
+  try { colWidths = JSON.parse(localStorage.getItem(WIDTH_KEY) || '{}') || {}; }
+  catch(e){ colWidths = {}; }
+  COLS.forEach((c,i)=>{ c.style.width = (colWidths[i] || COL_DEFAULTS[i]) + 'px'; });
+}
+function saveColWidths(){
+  try { localStorage.setItem(WIDTH_KEY, JSON.stringify(colWidths)); } catch(e){}
+}
+function resetColWidths(){
+  colWidths = {};
+  COLS.forEach((c,i)=>{ c.style.width = COL_DEFAULTS[i] + 'px'; });
+  saveColWidths();
+}
+function atGrip(th, clientX){
+  return (th.getBoundingClientRect().right - clientX) <= 8;
+}
+function initColResize(){
+  loadColWidths();
+  document.getElementById('resetColsBtn').onclick = resetColWidths;
+  document.querySelectorAll('thead th').forEach((th, i)=>{
+    th.addEventListener('mousedown', e=>{
+      if (!atGrip(th, e.clientX) || !COLS[i]) return;
+      e.preventDefault(); e.stopPropagation();
+      // <col> has no layout box, so measure the header cell instead
+      dragCol = { i, startX: e.clientX, startW: th.getBoundingClientRect().width };
+      document.body.classList.add('resizing');
+    });
+    th.addEventListener('dblclick', e=>{
+      if (!atGrip(th, e.clientX)) return;
+      e.preventDefault(); e.stopPropagation();
+      delete colWidths[i];
+      COLS[i].style.width = COL_DEFAULTS[i] + 'px';
+      saveColWidths();
+      suppressSortClick = true; setTimeout(()=>{ suppressSortClick = false; }, 0);
+    });
+  });
+  window.addEventListener('mousemove', e=>{
+    if (!dragCol) return;
+    const w = Math.max(56, Math.round(dragCol.startW + e.clientX - dragCol.startX));
+    COLS[dragCol.i].style.width = w + 'px';
+    colWidths[dragCol.i] = w;
+  });
+  window.addEventListener('mouseup', ()=>{
+    if (!dragCol) return;
+    dragCol = null;
+    document.body.classList.remove('resizing');
+    saveColWidths();
+    // the click that follows a drag must not trigger a sort
+    suppressSortClick = true; setTimeout(()=>{ suppressSortClick = false; }, 0);
+  });
+  // Click a truncated note to expand it in place (row grows, column never does)
+  document.getElementById('tbody').addEventListener('click', e=>{
+    if (e.target.classList && e.target.classList.contains('note')) e.target.classList.toggle('expanded');
+  });
+}
+
 function initFilters(){
   const cf = document.getElementById('companyFilters');
   COMPANIES.forEach(c=>{
@@ -4400,7 +4493,7 @@ function initFilters(){
   document.getElementById('exportBtn').onclick=exportCSV;
   document.getElementById('resetBtn').onclick=resetAll;
   document.querySelectorAll('thead th').forEach(th=>{
-    th.onclick=()=>{ const k=th.dataset.k; if(state.sortKey===k) state.sortDir*=-1; else {state.sortKey=k; state.sortDir=1;} render(); };
+    th.onclick=()=>{ if(suppressSortClick) return; const k=th.dataset.k; if(state.sortKey===k) state.sortDir*=-1; else {state.sortKey=k; state.sortDir=1;} render(); };
   });
 }
 
@@ -4439,10 +4532,12 @@ function render(){
   tb.innerHTML = rows.map(m=>{
     ensureDerived(m);
     const escHtml = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const escAttr = s => escHtml(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    const noteHtml = m.notes ? `<div class="note" title="${escAttr(m.notes)}">${escHtml(m.notes)}</div>` : '';
     const src = m.source ? `<a href="${m.source}" target="_blank" rel="noopener">link</a>` : '<span class="null">—</span>';
     return `<tr>
       <td class="company-tag">${m.company}</td>
-      <td>${m.model}${m.notes?`<div class="note">${m.notes}</div>`:''}</td>
+      <td title="${escAttr(m.model)}">${escHtml(m.model)}${noteHtml}</td>
       <td class="num">${m.release_date||'<span class="null">—</span>'}</td>
       <td class="tier">${m.tier||'<span class="null">—</span>'}</td>
       <td class="num">${nf(m.context_length)}</td>
@@ -4467,7 +4562,7 @@ function render(){
     `Showing <b>${rows.length}</b> of <b>${MODELS.length}</b> models · ` +
     `Open weights: <b>${open}</b> · ` +
     COMPANIES.filter(c=>byCo[c]).map(c=>`${c} <b>${byCo[c]}</b>`).join(' · ');
-  document.getElementById('foot').textContent = `Data compiled ${new Date().toISOString().slice(0,10)}. Prices are list/API rates and may change; verify against official docs via the Source links. FX fixed at 1 USD = 7.20 RMB. Cache-hit rate is the prompt-cache discount vs full input price where disclosed. License (open-weight models): MIT / Apache 2.0 are permissive; "Modified MIT" / "Community License" are open weights with commercial thresholds (e.g. >100M MAU) or acceptance requirements.`;
+  document.getElementById('foot').textContent = `Data compiled ${new Date().toISOString().slice(0,10)}. Prices are list/API rates and may change; verify against official docs via the Source links. FX fixed at 1 USD = 7.20 RMB. Cache-hit rate is the prompt-cache discount vs full input price where disclosed. License (open-weight models): MIT / Apache 2.0 are permissive; "Modified MIT" / "Community License" are open weights with commercial thresholds (e.g. >100M MAU) or acceptance requirements. Tip: drag a column's right edge to resize (saved in this browser), double-click the edge to reset that column, click a note to expand it.`;
   // sort arrows
   document.querySelectorAll('thead th').forEach(th=>{
     const base = th.textContent.replace(/[▲▼]\s*$/,'');
@@ -4491,6 +4586,7 @@ function exportCSV(){
   const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download="llm-tracker.csv"; a.click();
 }
 
+initColResize();
 initFilters();
 render();
 </script>
