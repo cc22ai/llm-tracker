@@ -1725,6 +1725,25 @@ const MODELS = [
   "source": "https://platform.openai.com/docs/models"
  },
  {
+  "company": "OpenAI",
+  "model": "GPT-6 Cyber",
+  "release_date": "2026-11-05",
+  "tier": "other (cyber)",
+  "context_length": null,
+  "total_params": null,
+  "active_params": null,
+  "open_weights": "N",
+  "price_input_usd": null,
+  "price_cached_usd": null,
+  "price_output_usd": null,
+  "price_input_rmb": null,
+  "price_cached_rmb": null,
+  "price_output_rmb": null,
+  "cache_hit_rate": null,
+  "notes": "Specialized cybersecurity foundation model (not a general-purpose chat model), released under OpenAI's Daybreak Red program (announced 2026-11-05 per Fortune, reported 2026-11-06 per The Verge). Based on GPT-6; outperforms GPT-6 Astra on most cyber tasks. Focuses on advanced vulnerability research and exploit development. On ExploitGym scores 48.5% vs 32.1% for GPT-5.6 Cyber and 42.4% for GPT-6 Astra. Helped discover 81 previously unknown Firefox vulnerabilities; classified 'Critical' under OpenAI's Preparedness Framework. API/Codex access only to approved Daybreak Red customers; no open weights. Context length, parameter counts, and token pricing undisclosed on the official announcement.",
+  "source": "https://openai.com/index/introducing-gpt-6-cyber/"
+ },
+ {
   "company": "xAI",
   "model": "Grok-3",
   "release_date": "2025-02-17",
@@ -2283,6 +2302,25 @@ const MODELS = [
   "notes": "First Gemini 4 model. Intro pricing $2/$10 (cached 95% off -> $0.10); rises to $4/$20 after intro period. 1M output tokens. Phased rollout via Fairwind Program.",
   "source": "https://aiwiz.uk/blog/gemini-4-argon",
   "license": null
+ },
+ {
+  "company": "Google",
+  "model": "Gemini 4 Carbon",
+  "release_date": "2026-10-28",
+  "tier": "flagship",
+  "context_length": 1000000,
+  "total_params": null,
+  "active_params": null,
+  "open_weights": "N",
+  "price_input_usd": 2.0,
+  "price_cached_usd": 0.1,
+  "price_output_usd": 10.0,
+  "price_input_rmb": 14.4,
+  "price_cached_rmb": 0.72,
+  "price_output_rmb": 72.0,
+  "cache_hit_rate": 95,
+  "notes": "Officially announced 2026-10-28 by Google DeepMind, two weeks after Gemini 4 Argon. Built on Argon; focused on cybersecurity defense and long-running multi-step agentic engineering tasks (can run for days on large codebases). Introductory price matches Argon ($2 in / $10 out per 1M); cached input at 95% off = $0.10. Standard $4/$20 applies after intro period (no end date published). Context window 1M per independent evaluators (Artificial Analysis, Vals AI). Limited rollout: first to vetted defenders via Fairwind Program; NOT yet on the public Gemini API / ai.google.dev pricing list as of late Oct 2026. Multimodal input (text/image/video/audio), text output. Source confirmed via The Paper, NetEase, Baidu Baike, QQ News.",
+  "source": "https://blog.google/technology/google-deepmind/gemini-4-carbon/"
  },
  {
   "company": "Meta",
@@ -3638,6 +3676,25 @@ const MODELS = [
   "cache_hit_rate": null,
   "notes": "Specialized open-weight 'memory writer' LLM (MoE 30B total / ~3B active, Apache 2.0) that runs the write path of agent memory frameworks (Mem0, MemOS, and Hy Memory's Chat/Working/Coding scenarios). Part of Tencent Hunyuan's Hy Memory 2.0 (open-sourced 2026-10-15/16). NOT a general chat/conversation foundation model — purpose-built to extract and update long-term agent memory. No hosted API price (self-host, open weights on Hugging Face). Context window undisclosed by source.",
   "source": "https://memory.hunyuan.tencent.com/ ; https://cloud.tencent.com/developer/article/2763042"
+ },
+ {
+  "company": "Tencent",
+  "model": "Hy4",
+  "release_date": "2026-11-04",
+  "tier": "flagship",
+  "context_length": 1000000,
+  "total_params": "770B",
+  "active_params": "49B",
+  "open_weights": "N",
+  "price_input_usd": 0.8333,
+  "price_cached_usd": 0.0417,
+  "price_output_usd": 2.5,
+  "price_input_rmb": 6,
+  "price_cached_rmb": 0.3,
+  "price_output_rmb": 18,
+  "cache_hit_rate": 95,
+  "notes": "GA on 2026-11-04 (formal release; Hy4 preview shipped 2026-08-28). MoE flagship, 770B total / 49B active. First Hy model with vision understanding + Computer Use (GUI/CLI), tuned for CAD/Blender and cross-app long workflows. Pricing flat vs preview: 6 / 18 / 0.3 RMB per 1M (cached = 0.3 is 5% of 6 → 95% off). 50% off on Tencent Cloud TokenHub through 2026-12-31. Official sources state weights 'will be open-sourced soon' (将于近期开源模型权重) but are NOT released as of 2026-11-08 — only Hy4-preview weights are on HF — hence open_weights=N despite 'open-source' branding. Max input ~960K / max output ~64K. Verified via Guangzhou Sci-Tech Bureau, emergent.sh, aiproducthub.",
+  "source": "https://www.tencent.com/zh-cn/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/"
  },
  {
   "company": "Alibaba",
