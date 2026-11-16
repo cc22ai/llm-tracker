@@ -3773,6 +3773,25 @@ const MODELS = [
   "source": "https://www.tencent.com/zh-cn/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/"
  },
  {
+  "company": "Tencent",
+  "model": "Hy4 flash",
+  "release_date": "2026-11-16",
+  "tier": "flash",
+  "context_length": 1000000,
+  "total_params": "224B",
+  "active_params": "12B",
+  "open_weights": "N",
+  "price_input_usd": 0.07,
+  "price_cached_usd": 0.003,
+  "price_output_usd": 0.281,
+  "price_input_rmb": 0.5,
+  "price_cached_rmb": 0.02,
+  "price_output_rmb": 2.0,
+  "cache_hit_rate": 96,
+  "notes": "Officially launched by Tencent Hunyuan on 2026-11-16 as the lowest-cost Hy model. MoE with 224B total params (incl. 64B Engram conditional-memory params) and 12B active per token; multimodal input, 1M context. Official RMB list price ¥0.5 input / ¥0.02 cache-hit / ¥2 output per 1M tokens; Tencent Cloud international price page lists US$0.07 / $0.003 / $0.281, so both sides are kept (USD figures are official, not derived at 7.20). Cache hit = 4% of full input price → 96% discount. Pretraining uses hybrid attention, LatentMoE and Engram (KV cache 1/24 of Hy3, 1/6 of Hy4); self-distilled from Hy4 with RL output-length reduction; megakernel + 4-bit quant + dflash give >150 tps decode. Tencent's WorkIndex puts per-task cost at 1/13 of Hy4 preview and 1/20 of Hy4; vendor-run internal benchmark, not independently verified. Live on Tencent Cloud TokenHub, WorkBuddy, Yuanbao, WeCom, QQ, ima and Marvis; OpenRouter 'soon'. WorkBuddy free and TokenHub API 50% off until 2026-11-30 (promotions, not list prices). Tencent says it PLANS to open-source Hy4 flash — no weights released as of 2026-11-16, hence open_weights=N.",
+  "source": "https://www.tencentcloud.com/zh/document/product/1300/78937 ; https://news.qq.com/rain/a/20261116A098T400"
+ },
+ {
   "company": "Alibaba",
   "model": "QwQ-32B",
   "release_date": "2025-03-06",
